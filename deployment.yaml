@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-hello-world-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kube-hello-world
+  template:
+    metadata:
+      labels:
+        app: kube-hello-world
+    spec:
+      containers:
+      - name: kube-hello-world
+        image: localhost:5000/kube-hello-world
+        ports:
+        - containerPort: 3000
