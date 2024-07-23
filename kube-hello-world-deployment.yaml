@@ -17,3 +17,12 @@ spec:
         image: localhost:5000/kube-hello-world
         ports:
         - containerPort: 3000
+        env:
+        - name: MYSQL_HOST
+          value: "mysql"
+        - name: MYSQL_PORT
+          value: "3306"
+        - name: REDIS_HOST
+          value: "redis"
+        - name: REDIS_PORT
+          value: "6379"

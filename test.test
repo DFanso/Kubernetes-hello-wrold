@@ -1,0 +1,2 @@
+docker tag kube-hello-world:latest kube-hello-world:5000/kube-hello-world:latest
+docker push kube-hello-world:5000/kube-hello-world:latest

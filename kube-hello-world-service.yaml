@@ -6,7 +6,6 @@ spec:
   selector:
     app: kube-hello-world
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 3000
-  type: LoadBalancer
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000

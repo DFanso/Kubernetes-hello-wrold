@@ -1,20 +1,26 @@
-# Use the official Node.js image
+# Use an official Node.js runtime as a parent image
 FROM node:20
 
-# Create and change to the app directory
+# Set the working directory
 WORKDIR /usr/src/app
 
-# Copy application dependency manifests to the container image
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install production dependencies
-RUN npm install --only=production
+# Install dependencies
+RUN npm install
 
-# Copy local code to the container image
+# Copy the rest of the application code
 COPY . .
 
-# Run the web service on container startup
-CMD [ "node", "index.js" ]
-
-# Expose port 3000 to the outside world
+# Expose the port the app runs on
 EXPOSE 3000
+
+# Define environment variables
+ENV MYSQL_HOST=mysql
+ENV MYSQL_PASSWORD=root
+ENV REDIS_HOST=redis
+ENV REDIS_PORT=6379
+
+# Start the app
+CMD ["node", "index.js"]
